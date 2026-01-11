@@ -15,7 +15,7 @@ class Service(TimeStampedModel):
     ]
 
     title = models.CharField("Título", max_length=100)
-    description = models.TextField("Descrição", max_length=200)
+    description = models.TextField("Descrição", max_length=1000)
     price = models.DecimalField("Preço", max_digits=6, decimal_places=2)
     icon = models.CharField("Ícone", max_length=50, choices=ICON_CHOICES, default='fa-hand-sparkles')
     is_sale = models.BooleanField("Destacar como Promoção?", default=False)
