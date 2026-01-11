@@ -101,3 +101,18 @@ body {
 .window-collapsed .y2k-window-body {
     display: none;
 }
+
+/* =========================================
+   Utilitário para esconder Barra de Scroll
+   ========================================= */
+
+/* Esconde a barra de scroll no Chrome, Safari e Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Esconde a barra de scroll no IE, Edge e Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;  /* Firefox */
+}

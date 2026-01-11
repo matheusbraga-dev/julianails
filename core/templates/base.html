@@ -72,16 +72,18 @@
 
 
     <script src="{% static 'js/mb_global.js' %}"></script>
-<div id="portfolio-lightbox" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300" aria-hidden="true">
-    <div class="absolute inset-0 bg-lilac-950/90 backdrop-blur-md" onclick="closeLightbox()"></div>
+    <div id="portfolio-lightbox" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300" aria-hidden="true">
+        <div class="absolute inset-0 bg-lilac-950/90 backdrop-blur-md" onclick="closeLightbox()"></div>
 
-    <div class="relative z-10 flex flex-col items-center justify-center h-full w-full p-4">
-        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 z-50">
-            <i class="fas fa-times text-4xl"></i>
-        </button>
-        <img id="lightbox-img" src="" alt="Zoom" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl transform scale-95 transition-transform duration-300">
-        <h3 id="lightbox-caption" class="mt-4 text-white font-display text-2xl italic tracking-wide"></h3>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full w-full p-4">
+            <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 z-50 cursor-pointer">
+                <i class="fas fa-times text-4xl"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="Zoom" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl transform scale-95 transition-transform duration-300">
+            <h3 id="lightbox-caption" class="mt-4 text-white font-display text-2xl italic tracking-wide"></h3>
+        </div>
     </div>
-</div>
+    <script src="{% static 'js/ui_service.js' %}"></script>
+
 </body>
 </html>
