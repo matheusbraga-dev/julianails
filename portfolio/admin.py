@@ -15,7 +15,7 @@ class BusinessConfigAdmin(admin.ModelAdmin):
     """ 
     fieldsets = (
         ("Informações Básicas", {
-            "fields": ("site_name", "phone_display", "whatsapp_number", "instagram_handle", "address", "opening_days", "opening_hours"),
+            "fields": ("site_name", "phone_display", "whatsapp_number", "instagram_handle", "address", "opening_days", "opening_hours", "hero_image"),
         }),
         ("Seção Sobre", {
             "fields": ("about_image", "preview_image", "about_text_p1", "about_text_p2"),
