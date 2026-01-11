@@ -1,0 +1,103 @@
+
+body {
+    scroll-behavior: smooth;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.rounded-arch {
+    border-radius: 300px 300px 20px 20px;
+}
+
+.rounded-oval {
+    border-radius: 45%;
+}
+
+/* Fundo animado estilo Y2K */
+.y2k-bg {
+    background: radial-gradient(circle at 0% 0%, rgba(197, 138, 249, 0.35), transparent 55%),
+                radial-gradient(circle at 100% 100%, rgba(170, 112, 194, 0.4), transparent 55%),
+                linear-gradient(135deg, #fdf4ff 0%, #fae8ff 40%, #e8bdfc 100%);
+    position: relative;
+    overflow: auto;
+}
+
+.y2k-bg::before,
+.y2k-bg::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.6) 0, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.4) 0, transparent 55%);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+/* Partículas flutuantes */
+.floating-icon {
+    position: fixed;
+    font-size: 2.3rem;
+    opacity: 0.28;
+    pointer-events: none;
+    animation: floatIcon 8s ease-in-out infinite;
+}
+@keyframes floatIcon {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-18px); }
+}
+
+/* Janelas estilo Y2K */
+.y2k-window {
+    border-radius: 1.1rem;
+    border: 2px solid #e8bdfc;
+    box-shadow:
+        0 10px 25px rgba(76,0,214,0.08),
+        0 0 0 1px rgba(255,255,255,0.8);
+    overflow: hidden;
+    background: linear-gradient(135deg,#ffffff 0%,#fdf4ff 50%,#fae8ff 100%);
+}
+
+.y2k-window-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: linear-gradient(90deg,#c58af9,#aa70c2,#4c00d6);
+    color: #fff;
+}
+
+.y2k-dots {
+    display: flex;
+    gap: 0.35rem;
+    align-items: center;
+}
+
+.y2k-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: #f9f1d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.55rem;
+}
+
+.y2k-window-body {
+    padding: 1.75rem;
+}
+
+.window-collapsed .y2k-window-body {
+    display: none;
+}

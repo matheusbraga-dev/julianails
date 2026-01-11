@@ -1,0 +1,30 @@
+<footer class="bg-white text-lilac-900 py-10 border-t border-lilac-100 relative overflow-hidden mt-10">
+<div class="container mx-auto px-6 flex flex-col items-center relative z-10">
+    <div class="font-script italic text-3xl mb-6 flex items-center">
+        <i class="fas fa-heart text-lilac-500 mr-2 text-2xl"></i> 
+        {{ config.site_name }}
+        <i class="fas fa-heart text-lilac-500 ml-2 text-2xl"></i> 
+    </div>
+    
+    <p class="font-body text-gray-400 text-[11px] tracking-widest uppercase opacity-80 mb-2">
+        {{ config.address }}
+    </p>
+    <p class="font-body text-gray-400 text-[11px] tracking-widest uppercase opacity-60">
+        &copy; 2026 {{ config.site_name }}. Todos os direitos reservados.
+    </p>
+    <div class="flex gap-6 mb-6 mt-6">
+                <a href="https://instagram.com/{{config.instagram_handle|cut:"@"}}" target="_blank" class="w-11 h-11 rounded-full bg-lilac-50 flex items-center justify-center hover:bg-lilac-100 transition-all text-lilac-600 shadow-sm hover:shadow-md transform hover:-translate-y-1">
+                    <i class="fab fa-instagram text-lg"></i>
+                </a>
+                <a href="https://wa.me/{{config.whatsapp_number}}" target="_blank" class="w-11 h-11 rounded-full bg-lilac-50 flex items-center justify-center hover:bg-lilac-100 transition-all text-lilac-600 shadow-sm hover:shadow-md transform hover:-translate-y-1">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                </a>
+                <a href="#" class="w-11 h-11 rounded-full bg-lilac-50 flex items-center justify-center hover:bg-lilac-100 transition-all text-lilac-600 shadow-sm hover:shadow-md transform hover:-translate-y-1">
+                    <i class="fas fa-map-marker-alt text-lg" title="{{config.address}}"></i>
+                </a>
+    </div>
+    <p class="text-gray-400 text-sm mt-4">
+        © Made with Coffe ☕ by <a href="https://matheusbraga.dev" class="hover:text-lilac-600">MB System</a>
+    </p>
+</div>
+</footer>

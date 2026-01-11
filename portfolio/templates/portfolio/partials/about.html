@@ -1,0 +1,39 @@
+<section id="about" class="y2k-window">
+    <div class="y2k-window-header">
+        <span class="text-xs"></span>
+        <div class="y2k-dots">
+            <button class="y2k-dot"></button><button class="y2k-dot"></button><button class="y2k-dot"></button>
+        </div>
+    </div>
+    <div class="y2k-window-body">
+        <section class="py-10 bg-lilac-50/50 relative overflow-hidden rounded-3xl">
+            <div class="container mx-auto px-4 md:px-6 relative z-10">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-16">
+                    <div class="w-full md:w-1/2 flex justify-center md:justify-start relative">
+                        <div class="relative w-[260px] h-[260px] md:w-[340px] md:h-[340px]">
+                            <div class="w-full h-full rounded-full overflow-hidden border-8 border-white shadow-xl relative z-10">
+                                {% if config.about_image %}
+                                    <img src="{{ config.about_image.url }}" alt="Foto de Perfil" class="w-full h-full object-cover">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop" class="w-full h-full object-cover">
+                                {% endif %}
+                            </div>
+                            <div class="absolute top-4 -right-4 w-full h-full rounded-full border-2 border-lilac-200 z-0 animate-spin-slow"></div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/2 text-center md:text-right">
+                        <span class="text-lilac-400 font-script text-3xl mb-2 block relative inline-block">Sobre Mim</span>
+                        <h2 class="font-display text-3xl md:text-4xl text-lilac-900 mb-5">Julia Ellen</h2>
+                        
+                        <div class="space-y-5 text-gray-600 font-light text-base md:text-lg leading-relaxed">
+                            <p>{{ config.about_text_p1 }}</p>
+                            <p>{{ config.about_text_p2 }}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

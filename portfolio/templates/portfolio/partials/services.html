@@ -1,0 +1,36 @@
+<section id="services">
+    <div class="container mx-auto px-2 md:px-4 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="font-display text-3xl md:text-5xl text-lilac-900">Meus Serviços</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-8">
+            {% for service in services %}
+            <div class="p-7 md:p-8 rounded-[3rem] bg-lilac-50 hover:bg-white border border-transparent hover:border-lilac-100 hover:shadow-xl transition-all duration-300 text-center group relative overflow-hidden">
+                
+                {% if service.is_sale %}
+                <div class="absolute top-4 right-4 bg-gold-500 text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full">
+                    Promoção
+                </div>
+                {% endif %}
+                {% if service.is_popular %}
+                <div class="absolute top-4 left-4 bg-gold-500 text-white text-[11px] font-bold uppercase px-3 py-1 rounded-full">
+                    Mais Popular
+                </div>
+                {% endif %}
+                <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center text-lilac-500 mb-6 shadow-sm group-hover:scale-110 transition-transform relative z-10">
+                    <i class="fas {{ service.icon }} text-2xl"></i>
+                </div>
+                
+                <h3 class="font-display text-2xl text-lilac-900 mb-2 relative z-10">{{ service.title }}</h3>
+                <p class="text-gray-500 font-light text-sm mb-6 relative z-10 min-h-[60px]">{{ service.description }}</p>
+                <span class="text-lilac-700 font-bold block mb-4 relative z-10">R$ {{ service.price }}</span>
+                
+                <a href="#booking" onclick="selectService('{{ service.id }}')" class="inline-block text-lilac-500 hover:text-lilac-700 text-sm uppercase tracking-wider font-bold relative z-10">
+                    Agendar <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

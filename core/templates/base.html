@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config.site_name|default:"Julia Ellen Nails" }}</title>
+    
+    <meta name="description" content="Nail designer em Camaragibe, especializada em unhas em gel, fibra de vidro e esmaltação em gel. Agende seu horário comigo.">
+    <meta name="keywords" content="nail designer em Camaragibe, unhas em gel, fibra de vidro, alongamento de unhas, esmaltação em gel, manicure profissional">
+
+    <meta name="author" content="Matheus Braga">
+    <meta name="robots" content="index, follow">
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "BeautySalon",
+        "name": "Julia Ellen Nails",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Camaragibe",
+            "addressRegion": "PE",
+            "addressCountry": "BR"
+        },
+        "telephone": "+55-81-99999-9999",
+        "areaServed": "Camaragibe",
+        "priceRange": "$$",
+        "sameAs": [
+            "https://www.instagram.com/juliaellen.nails"
+        ]
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Damion&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+
+    <!-- Configuração Personalizada do Usuário -->
+    <script src="{% static 'js/tailwind_person.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body class="font-body text-gray-700 antialiased selection:bg-lilac-200 selection:text-lilac-900 y2k-bg">
+
+    <span class="floating-icon" style="top:12%; left:6%; animation-delay:0s;">🎀</span>
+    <span class="floating-icon" style="top:18%; right:8%; animation-delay:1.2s;">⭐</span>
+    <span class="floating-icon" style="bottom:16%; left:14%; animation-delay:2.3s;">✨</span>
+    <span class="floating-icon" style="bottom:20%; right:10%; animation-delay:3.4s;">💜</span>
+
+    {% include 'portfolio/partials/navbar.html' %}
+
+    <main class="pt-24 pb-16 space-y-16 max-w-6xl mx-auto px-4 md:px-6">
+        {% include 'portfolio/partials/hero.html' %}
+        {% include 'portfolio/partials/services.html' %}
+        {% include 'portfolio/partials/portfolio.html' %}
+        {% include 'portfolio/partials/about.html' %}
+        {% include 'portfolio/partials/booking.html' %}
+
+    </main>
+
+     {% include 'portfolio/partials/footer.html' %}
+
+
+    <script src="{% static 'js/mb_global.js' %}"></script>
+<div id="portfolio-lightbox" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300" aria-hidden="true">
+    <div class="absolute inset-0 bg-lilac-950/90 backdrop-blur-md" onclick="closeLightbox()"></div>
+
+    <div class="relative z-10 flex flex-col items-center justify-center h-full w-full p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 z-50">
+            <i class="fas fa-times text-4xl"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Zoom" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl transform scale-95 transition-transform duration-300">
+        <h3 id="lightbox-caption" class="mt-4 text-white font-display text-2xl italic tracking-wide"></h3>
+    </div>
+</div>
+</body>
+</html>

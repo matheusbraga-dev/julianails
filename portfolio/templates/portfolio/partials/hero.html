@@ -1,0 +1,79 @@
+<section id="hero">
+    <div class="y2k-window-body p-0">
+        <div class="relative bg-white rounded-3xl overflow-hidden shadow-sm">
+            <div class="absolute inset-0 opacity-60 mix-blend-multiply">
+                <img src="https://img.freepik.com/fotos-gratis/arte-roxa-liquida-pintando-um-fundo-colorido-abstrato-com-respingos-de-cor-e-pinturas-de-arte-moderna_1258-99672.jpg"
+                        alt="Fundo Com Textura" class="w-full h-full object-cover">
+            </div>
+
+            <div class="relative px-6 md:px-10 lg:px-16 pt-10 pb-12 md:pb-16">
+                <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-12">
+                    <div class="flex-1 text-center md:text-left">
+                        <p class="uppercase tracking-[0.25em] text-[10px] text-gray-500 mb-3">
+                            {{ config.phone_display }}
+                        </p>
+
+                        <h1 class="text-5xl md:text-6xl font-script text-lilac-900 leading-none mb-2">
+                            {{ config.site_name }}
+                        </h1>
+                        <p class="sr-only">
+                              Sou nail designer em Camaragibe – PE, especializada em unhas em gel, fibra de vidro, e nail art personalizada.
+                        </p>
+
+                        <p class="uppercase tracking-[0.35em] text-[11px] text-gray-700 mb-3">
+                            <a href="https://instagram.com/{{config.instagram_handle|cut:"@"}}"><span class="font-display tracking-[0.25em]">{{ config.instagram_handle }}</span></a>
+                        </p>
+
+                        <p class="flex items-center justify-center md:justify-start gap-2 text-[11px] tracking-[0.25em] uppercase text-gray-600">
+                            <i class="fas fa-location-dot text-lilac-500 text-xs"></i>
+                            {{ config.address }}
+                        </p>
+                    </div>
+
+                    <div class="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden border-[6px] border-white shadow-xl flex-shrink-0">
+                        {% if config.about_image %}
+                        <img src="{{config.about_image.url}}"
+                                alt="Julia Ellen, Nails Designer em Camaragibe" 
+                                class="w-full h-full object-cover"
+                        >
+                        {% else %}
+                        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80"
+                                alt="Nail art destaque" 
+                                class="w-full h-full object-cover"
+                        >
+                        {% endif %}
+
+                    </div>
+                </div>
+                <div class="mt-10 mb-1 border-t border-white/60"></div>
+            </div>
+        </div>
+        
+        <div class="w-full flex flex-col md items-center justify-between gap-12 relative z-10 px-4 md:px-6 pb-8 pt-6">
+            <div class="w-full md:w-8/12 text-center">
+                <span class="text-lilac-500 font-bold tracking-[0.25em] text-[10px] uppercase mb-4 block flex items-center justify-center">
+                    <i class="fas fa-star text-[9px] text-gold-500 mr-2"></i> Nail Design & Art Studio <i class="fas fa-star text-[9px] text-gold-500 ml-2"></i>
+                </span>
+                
+                <h2 class="font-display text-4xl md:text-5xl lg:text-6xl text-lilac-950 mb-5 leading-[1.1]">
+                    Sua beleza em <br> 
+                    <span class="font-script text-lilac-400 text-5xl md:text-6xl relative inline-block">
+                        detalhes
+                        <svg class="absolute w-full h-4 -bottom-2 center-0 text-lilac-200 opacity-60" viewBox="0 0 100 15" preserveAspectRatio="none">
+                            <path d="M0 10 Q 25 0 50 10 T 100 10" stroke="gold" stroke-width="3" fill="none" />
+                        </svg>
+                    </span> únicos.
+                </h2>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                    <a href="#booking" class="px-7 py-3 bg-lilac-900 text-white rounded-full font-display hover:bg-lilac-800 transition-colors shadow-xl shadow-lilac-100 flex items-center justify-center text-sm">
+                        <i class="far fa-calendar-check mr-2"></i> Agendar Horário
+                    </a>
+                    <a href="#services" class="px-7 py-3 bg-lilac-900 text-white rounded-full font-display hover:bg-lilac-800 transition-colors shadow-xl shadow-lilac-100 flex items-center justify-center text-sm">
+                        Ver Serviços <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
