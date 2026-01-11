@@ -1,0 +1,34 @@
+/* Cor principal da Navbar */
+.navbar-purple {
+    background-color: #8a4fb7 !important;
+}
+
+/* Sidebar ativa */
+.sidebar-dark-purple .nav-sidebar>.nav-item>.nav-link.active,
+.sidebar-light-purple .nav-sidebar>.nav-item>.nav-link.active {
+    background-color: #8a4fb7 !important;
+    color: #fff;
+    border-color: #8a4fb7 !important;
+}
+
+/* Botões Primários (Salvar) */
+.btn-purple {
+    background-color: #8a4fb7;
+    border-color: #8a4fb7;
+    color: white;
+}
+.btn-purple:hover {
+    background-color: #4c00d6; /* Tom mais escuro para hover */
+    color: white;
+}
+
+/* Link de "Ver Site" e acentos */
+.accent-purple .btn-link, 
+.accent-purple a:not(.dropdown-item):not(.btn-app):not(.nav-link):not(.brand-link):not(.page-link):not(.btn) {
+    color: #8a4fb7;
+}
+
+/* Ajuste do Dropdown do usuário */
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #8a4fb7;
+}

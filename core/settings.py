@@ -36,6 +36,7 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(",")
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -149,3 +150,88 @@ if not DEBUG:
     SECURE_HSTS_INCLUDE_SUBDOMAINS=True
     SECURE_HSTS_PRELOAD=True
     SECURE_PROXY_SSL_HEADER=("HTTP_X_FORWARDED_PROTO", "https")
+
+# --- JAZZMIN SETTINGS (Personalização do Painel) ---
+
+JAZZMIN_SETTINGS = {
+    # Títulos
+    "site_title": "Julia Ellen Nails Admin",
+    "site_header": "Julia Ellen Nails",
+    "site_brand": "Administração do Studio",
+    "welcome_sign": "Bem-vinda ao seu Studio!",
+    "copyright": "Julia Ellen Nails",
+    "search_model": ["portfolio.Service", "portfolio.PortfolioItem"], # Barra de busca global
+
+    # Menu Superior
+    "topmenu_links": [
+        {"name": "Ver Site", "url": "home", "permissions": ["auth.view_user"]}, # Link para ver o site
+    ],
+
+    # Menu do Usuário
+    "usermenu_links": [
+        {"model": "auth.user"}
+    ],
+
+    # Menu Lateral
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_models": ["auth.Group"],
+
+    # ÍCONES (FontAwesome 5)
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        
+        # Models
+        "portfolio.BusinessConfig": "fas fa-store",       # Ícone de Loja/Config
+        "portfolio.Service": "fas fa-heart",      # Mão com brilho (Nails)
+        "portfolio.PortfolioItem": "fas fa-camera-retro", # Câmera
+        "portfolio.BookingConfig": "fas fa-clock",        # Relógio/Agenda
+    },
+
+    # Ordem do Menu (O que aparece primeiro)
+    "order_with_respect_to": [
+        "portfolio.models.business_config.BusinessConfig",
+        "portfolio.models.booking_config.BookingConfig",
+        "portfolio.models.service.Service",
+        "portfolio.models.portfolio_item.PortfolioItem",
+        "auth",
+    ],
+
+    # CSS Customizado
+    "custom_css": "vendor/jazzmin/css/custom_admin.css",
+}
+
+# --- TEMAS E CORES (Vibe Roxo/Lilás) ---
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-purple",
+    "accent": "accent-purple",
+    "navbar": "navbar-purple navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": True,
+    "sidebar": "sidebar-dark-purple",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": True,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "default",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-purple",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
+}
