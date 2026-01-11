@@ -1,6 +1,6 @@
 # 💅 Julia Ellen Nails - Website & CMS
 
-Sistema de gerenciamento de portfólio e site institucional para o estúdio **Julia Ellen Nails**. 
+Sistema de gerenciamento de portfólio e site institucional para o estúdio [**Julia Ellen Nails**](https://julianails.com.br). 
 Desenvolvido em **Django**, o projeto funciona como um CMS (Content Management System) personalizado, permitindo a gestão fácil de serviços, horários e galeria de fotos.
 
 ## 🚀 Funcionalidades
