@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Monta a mensagem
-            const message = `Olá! Me chamo *${name}*.\nGostaria de agendar o serviço: *${service}*.\n\n📅 Data: *${formattedDate}*\n⏰ Horário: *${time}*`;
+            const message = `Olá! Me chamo *${name}*.\nGostaria de agendar o serviço: *${service}*.\n\n📅 Preferência de Data: *${formattedDate}*\n⏰ Preferência de Horário: *${time}*`;
 
             // Abre WhatsApp após pequeno delay para UI atualizar
             setTimeout(() => {
