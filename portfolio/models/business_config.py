@@ -12,6 +12,7 @@ class BusinessConfig(SingletonModel):
     whatsapp_number = models.CharField("Número do WhatsApp", max_length=20, help_text="Apenas números. Ex: 5581999999999")
     instagram_handle = models.CharField("Instagram", max_length=50, help_text="Sem o @. Ex: juliaellen.nails")
     address = models.CharField("Endereço", max_length=200, default="Cosme Damião - Camaragibe")
+    hero_image = models.ImageField("Imagem Hero", upload_to='hero/', blank=True, null=True)
     
     # Seção Sobre
     about_image = models.ImageField("Imagem Sobre", upload_to='about/', blank=True, null=True)
