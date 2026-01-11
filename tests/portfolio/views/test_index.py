@@ -3,6 +3,7 @@ from django.urls import reverse
 
 from portfolio.models.booking_config import BookingConfig
 from portfolio.models.service import Service
+from portfolio.models.visit import Visit
 
 
 @pytest.mark.django_db
@@ -67,3 +68,52 @@ class TestHomeView:
         assert b1 in schedules
         assert b2 in schedules
         assert schedules.count() == 2
+
+
+    url = reverse('home') 
+
+    def test_first_visit_increments_counter(self, client):
+        initial_count = Visit.objects.count()
+        response = client.get(self.url)
+
+        assert response.status_code == 200
+        assert Visit.objects.count() == initial_count + 1
+        
+        visit = Visit.objects.first()
+        assert visit.ip_address == "127.0.0.1"
+
+        assert client.session.get('has_visited') is True
+
+    def test_second_visit_does_not_increment_counter(self, client):
+        client.get(self.url)
+        assert Visit.objects.count() == 1
+        
+        client.get(self.url)
+        assert Visit.objects.count() == 1
+
+    def test_visit_records_real_ip_via_remote_addr(self, client):
+        response = client.get(self.url, REMOTE_ADDR="10.0.0.5")
+
+        visit = Visit.objects.first()
+        assert visit is not None
+
+    def test_visit_records_ip_via_x_forwarded_for(self, client):
+        headers = {'HTTP_X_FORWARDED_FOR': '203.0.113.195, 192.168.1.1'}
+        client.get(self.url, **headers)
+        visit = Visit.objects.first()
+        assert visit.ip_address == '203.0.113.195'
+
+    def test_new_session_creates_new_visit(self, client):
+        client.get(self.url)
+        assert Visit.objects.count() == 1
+        
+        client.cookies.clear() 
+        client.get(self.url)
+        assert Visit.objects.count() == 2
+
+    def test_session_expiry_set_correctly(self, client):
+        client.get(self.url)
+        session = client.session
+        expiry_age = session.get_expiry_age()
+        
+        assert 86400 - 5 <= expiry_age <= 86400 + 5

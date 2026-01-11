@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from .models import business_config, service, portfolio_item, booking_config
+from .models import business_config, service, portfolio_item, booking_config, visit
 
 
 class HomeView(TemplateView):
@@ -17,3 +17,19 @@ class HomeView(TemplateView):
         context['schedules'] = booking_config.BookingConfig.objects.all()
 
         return context
+    
+    def get(self, request, *args, **kwargs):
+        if not request.session.get('has_visited'):
+    
+            x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+            if x_forwarded_for:
+                ip = x_forwarded_for.split(',')[0]
+            else:
+                ip = request.META.get('REMOTE_ADDR')
+
+            visit.Visit.objects.create(ip_address=ip, page="Home")
+            
+            request.session['has_visited'] = True
+            request.session.set_expiry(60 * 60 * 24)
+
+        return super().get(request, *args, **kwargs)

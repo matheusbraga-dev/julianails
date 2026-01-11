@@ -187,6 +187,7 @@ JAZZMIN_SETTINGS = {
         "portfolio.Service": "fas fa-heart",      # Mão com brilho (Nails)
         "portfolio.PortfolioItem": "fas fa-camera-retro", # Câmera
         "portfolio.BookingConfig": "fas fa-clock",        # Relógio/Agenda
+        "portfolio.Visit": "fas fa-eye",               # Olho/Visitas
     },
 
     # Ordem do Menu (O que aparece primeiro)
@@ -195,6 +196,7 @@ JAZZMIN_SETTINGS = {
         "portfolio.models.booking_config.BookingConfig",
         "portfolio.models.service.Service",
         "portfolio.models.portfolio_item.PortfolioItem",
+        "portfolio.Visit",
         "auth",
     ],
 

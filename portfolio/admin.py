@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
 from django.contrib.auth.models import Group
-from .models import business_config, service, portfolio_item, booking_config
+from .models import business_config, service, portfolio_item, booking_config, visit
 
 
 admin.site.unregister(Group)
@@ -87,3 +87,32 @@ class BookingConfigAdmin(admin.ModelAdmin):
     def icon_display(self, obj):
         return mark_safe(f'<i class="fas {obj.icon}" style="font-size: 1.2em; color: #b474c6;"></i>')
     icon_display.short_description = "Ícone"
+
+
+@admin.register(visit.Visit)
+class VisitAdmin(admin.ModelAdmin):
+    list_display = ('timestamp', 'ip_address', 'page')
+    list_filter = ('timestamp', 'page')
+    date_hierarchy = 'timestamp'
+    search_fields = ('ip_address',)
+    
+    change_list_template = 'portfolio/admin/portfolio/visit/change_list.html'
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def changelist_view(self, request, extra_context=None):
+        response = super().changelist_view(request, extra_context)
+
+        if hasattr(response, 'context_data') and 'cl' in response.context_data:
+            qs = response.context_data['cl'].queryset
+            total = qs.count()
+            unique = qs.values('ip_address').distinct().count()
+
+            response.context_data['total_visits'] = total
+            response.context_data['unique_visitors'] = unique
+        
+        return response
