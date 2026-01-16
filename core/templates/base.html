@@ -49,6 +49,11 @@
     <script src="{% static 'js/tailwind_person.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    <!-- Configuração Flatpickr-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+
 </head>
 <body class="font-body text-gray-700 antialiased selection:bg-lilac-200 selection:text-lilac-900 y2k-bg">
 
@@ -70,7 +75,7 @@
 
      {% include 'portfolio/partials/footer.html' %}
 
-
+    
     <script src="{% static 'js/mb_global.js' %}"></script>
     <div id="portfolio-lightbox" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300" aria-hidden="true">
         <div class="absolute inset-0 bg-lilac-950/90 backdrop-blur-md" onclick="closeLightbox()"></div>
@@ -84,6 +89,7 @@
         </div>
     </div>
     <script src="{% static 'js/ui_service.js' %}"></script>
+
 
 </body>
 </html>
