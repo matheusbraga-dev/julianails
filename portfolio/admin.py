@@ -1,7 +1,14 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
 from django.contrib.auth.models import Group
-from .models import business_config, service, portfolio_item, booking_config, visit
+from .models import (
+    business_config,
+    service,
+    portfolio_item,
+    booking_config,
+    visit,
+    schedule_config,
+)
 
 
 admin.site.unregister(Group)
@@ -116,3 +123,46 @@ class VisitAdmin(admin.ModelAdmin):
             response.context_data['unique_visitors'] = unique
         
         return response
+
+
+
+@admin.register(schedule_config.ScheduleConfig)
+class ScheduleSettingsAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ("Janela de Agendamento", {
+            "description": "Controle com que antecedência os clientes podem agendar compromissos.",
+            "fields": ("only_current_month", "max_days_ahead")
+        }),
+        ("Dias de Trabalho", {
+            "description": "Selecione os dias em que o estúdio está aberto.",
+            "fields": (
+                "works_sunday",
+                "works_monday",
+                "works_tuesday",
+                "works_wednesday",
+                "works_thursday",
+                "works_friday",
+                "works_saturday",
+            )
+        }),
+    )
+
+    def has_add_permission(self, request):
+        return not schedule_config.ScheduleConfig.objects.exists()
+
+
+@admin.register(schedule_config.BlockedDate)
+class BlockedDateAdmin(admin.ModelAdmin):
+    list_display = ("start_date", "end_date", "reason")
+    list_filter = ("start_date",)
+    search_fields = ("reason",)
+    ordering = ("-start_date",)
+
+    fieldsets = (
+        ("Período Bloqueado", {
+            "fields": ("start_date", "end_date")
+        }),
+        ("Detalhes", {
+            "fields": ("reason",),
+        }),
+    )
