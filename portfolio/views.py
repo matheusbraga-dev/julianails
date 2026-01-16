@@ -1,5 +1,14 @@
 from django.views.generic import TemplateView
-from .models import business_config, service, portfolio_item, booking_config, visit
+
+from .models import (
+    business_config,
+    service,
+    portfolio_item,
+    booking_config,
+)
+
+from .services.calendar import CalendarService
+from .services.visit import VisitService
 
 
 class HomeView(TemplateView):
@@ -15,21 +24,12 @@ class HomeView(TemplateView):
         context['portfolio_items'] = portfolio_item.PortfolioItem.objects.all()
         
         context['schedules'] = booking_config.BookingConfig.objects.all()
-
+       
+        context.update(CalendarService.get_calendar_context())
+    
         return context
     
     def get(self, request, *args, **kwargs):
-        if not request.session.get('has_visited'):
-    
-            x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-            if x_forwarded_for:
-                ip = x_forwarded_for.split(',')[0]
-            else:
-                ip = request.META.get('REMOTE_ADDR')
-
-            visit.Visit.objects.create(ip_address=ip, page="Home")
-            
-            request.session['has_visited'] = True
-            request.session.set_expiry(60 * 60 * 24)
+        VisitService.track_visit(request, page_name="Home")
 
         return super().get(request, *args, **kwargs)
