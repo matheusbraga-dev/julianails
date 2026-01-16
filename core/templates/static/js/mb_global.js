@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Captura valores
             const name = document.getElementById('input-name').value;
             const service = document.getElementById('input-service').value;
-            const rawDate = inputDate.value; // Vem como AAAA-MM-DD
+            const rawDate = inputDate.value;
             const time = document.getElementById('input-time').value;
             
             // Pega número do HTML
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Monta a mensagem
-            const message = `Olá! Me chamo *${name}*.\nGostaria de agendar o serviço: *${service}*.\n\n📅 Preferência de Data: *${formattedDate}*\n⏰ Preferência de Horário: *${time}*`;
+            const message = `Olá! Me chamo *${name}*.\nGostaria de agendar o serviço: *${service}*.\n\n📅 Preferência de Data: *${rawDate}*\n⏰ Preferência de Horário: *${time}*`;
 
             // Abre WhatsApp após pequeno delay para UI atualizar
             setTimeout(() => {
