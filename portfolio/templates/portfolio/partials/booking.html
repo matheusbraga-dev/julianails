@@ -90,7 +90,7 @@
                         <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-lilac-300">
                             <i class="far fa-calendar-alt"></i>
                         </span>
-                        <input type="date" id="input-date" required class="w-full bg-white border-0 rounded-full pl-12 pr-6 py-3.5 outline-none focus:ring-2 focus:ring-lilac-200 text-gray-600 shadow-sm text-sm">
+                        <input type="text" id="input-date" required readonly class="w-full bg-white border-0 rounded-full pl-12 pr-6 py-3.5 outline-none focus:ring-2 focus:ring-lilac-200 text-gray-600 shadow-sm text-sm" placeholder="Selecione uma Data">
                     </div>
                 </div>
             <div>
@@ -142,3 +142,32 @@
         </section>
     </div>
 </section>
+<script>
+    const maxDate = "{{ calendar_max_date|safe }}";
+    const disabledWeekdays = {{ calendar_disable_weekdays|safe }};
+    const blockedDates = {{ calendar_blocked_dates|safe }};
+
+    flatpickr("#input-date", {
+        locale: flatpickr.l10ns.pt,
+        minDate: "today",
+        maxDate: maxDate,
+        dateFormat: "d/m/Y",
+        disableMobile: true,
+        disable: [
+                function(date) {
+                    // bloqueia dias da semana
+                    if (disabledWeekdays.includes(date.getDay())) {
+                        return true;
+                    }
+
+                    // bloqueia datas específicas
+                    const formatted =
+                        date.getFullYear() + "-" +
+                        String(date.getMonth() + 1).padStart(2, "0") + "-" +
+                        String(date.getDate()).padStart(2, "0");
+
+                    return blockedDates.includes(formatted);
+                }
+            ]
+    });
+</script>
