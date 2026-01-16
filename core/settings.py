@@ -188,6 +188,8 @@ JAZZMIN_SETTINGS = {
         "portfolio.PortfolioItem": "fas fa-camera-retro", # Câmera
         "portfolio.BookingConfig": "fas fa-clock",        # Relógio/Agenda
         "portfolio.Visit": "fas fa-eye",               # Olho/Visitas
+        "portfolio.ScheduleConfig": "fas fa-calendar-alt", # Calendário
+        "portfolio.BlockedDate": "fas fa-ban",          # Proibido/Datas Bloqueadas
     },
 
     # Ordem do Menu (O que aparece primeiro)
@@ -196,7 +198,9 @@ JAZZMIN_SETTINGS = {
         "portfolio.models.booking_config.BookingConfig",
         "portfolio.models.service.Service",
         "portfolio.models.portfolio_item.PortfolioItem",
-        "portfolio.Visit",
+        "portfolio.models.visit.Visit",
+        "portfolio.models.schedule_config.ScheduleConfig",
+        "portfolio.models.schedule_config.BlockedDate",
         "auth",
     ],
 
